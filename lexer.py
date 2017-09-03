@@ -47,7 +47,12 @@ def test(stack, variables):
                 del stack[i-2]
                 break
             elif stack[i] == '=':
-                variables[stack[i-1]] = stack[i-2]
+                varname = stack[i-1]
+                nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+                if varname[0] in nums:
+                    print('All variables must start with a letter. Error: '+stack[i-1])
+                else:
+                    variables[stack[i-1]] = stack[i-2]
                 del stack[i]
                 del stack[i-1]
                 del stack[i-2]

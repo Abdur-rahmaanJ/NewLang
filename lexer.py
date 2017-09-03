@@ -62,7 +62,15 @@ def test(stack, variables):
                 del stack[i-1]
                 break
             elif stack[i] in variables:
-                stack[i] = variables[stack[i]]
+                if stack[i+1] == '=':
+                    variables[stack[i]] = stack[i-1]
+                    del stack[i+1]
+                    del stack[i]
+                    del stack[i-1]
+                else:
+                    stack[i] = variables[stack[i]]
+                break
         test(stack, variables)
-
+    elif len(stack) == 1:
+        pass
 read("test.txt")

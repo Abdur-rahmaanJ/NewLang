@@ -70,6 +70,10 @@ def test(stack, variables):
                 else:
                     stack[i] = variables[stack[i]]
                 break
+            elif stack[i] == '#':
+                for j in range(i, len(stack)-i):
+                    del stack[i]
+                break
         test(stack, variables)
     elif len(stack) == 1:
         pass
